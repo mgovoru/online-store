@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>NewsPortal</title>
+</head>
+<body>
+<header>
+    <h1>Online Store</h1>
+</header>
+<main>
+    <div class="sources buttons"></div>
+    <div class="cart"></div>
+</main>
+<footer>
+    <span class="copyright">Copyright <a href="#">OS</a></span>
+    <a href="#" class="github">
+        <img src="<%= require('./assets/github.svg') %>" alt="github icon" width="30" height="30"/>
+    </a>
+    <a href="" class="github">
+         <img src="<%= require('./assets/github.svg') %>" alt="github icon" width="30" height="30"/>
+    </a>
+    <span class="date">Dec-2022</span>
+    <a href="https://rs.school/js/" class="course-logo">
+        <img src="<%= require('./assets/rs_school_js.svg') %>" alt="course logo" width="60"/>
+    </a>
+</footer>
+
+<template id="sourceItem" class="template">
+    <div class="source__item">
+        <span class="source__item-name"></span>
+    </div>
+</template>
+
+<script src="./index.js"></script>
+</body>
+</html>
