@@ -1,39 +1,85 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>NewsPortal</title>
+    <link rel="stylesheet" href="./style.css">
 </head>
+
 <body>
-<header>
-    <h1>Online Store</h1>
-</header>
-<main>
-    <div class="sources buttons"></div>
-    <div class="cart"></div>
-</main>
-<footer>
-    <span class="copyright">Copyright <a href="#">OS</a></span>
-    <a href="#" class="github">
-        <img src="<%= require('./assets/github.svg') %>" alt="github icon" width="30" height="30"/>
-    </a>
-    <a href="" class="github">
-         <img src="<%= require('./assets/github.svg') %>" alt="github icon" width="30" height="30"/>
-    </a>
-    <span class="date">Dec-2022</span>
-    <a href="https://rs.school/js/" class="course-logo">
-        <img src="<%= require('./assets/rs_school_js.svg') %>" alt="course logo" width="60"/>
-    </a>
-</footer>
+    <header>
+        <h1>Online Store</h1>
+    </header>
+    <main>
+        <div class="main__container">
+            <div class="main__grid grid">
+                <div class="grid__filters filters">
+                    <div class="filters__categories categories">
+                        <div class="categories__title">
+                            <div class="categories__reset">Reset Filters</div>
+                            <div class="categories__copylink">Copy Link</div>
+                        </div>
+                        <form action="">
+                            <section class="categories__info">
+                                <h2 class="categories__sub-title">Category</h2>
+                                <!-- <div class="categories__block">
+                										<input type="checkbox" name="category" value="smartphones" id="smartphones"
+                											class="categories__input"><label for="smartphones">Smartphones</label><span
+                											class="categories__quantity quantity-smartphones"></span>
+                									</div> -->
+                            </section>
+                            <section class="categories__brand">
+                                <h2 class="categories__sub-title">Brand</h2>
+                                <!-- <div class="categories__block">
+                															<input type="checkbox" name="brand" value="smartphones" id="smartphones"
+                																class="categories__input"><label for="smartphones">Smartphones</label><span
+                																class="categories__quantity quantity-smartphones"></span>
+                														</div> -->
+                            </section>
+                            <section class="categories__brand">
+                                <h2 class="categories__sub-title">Price</h2>
 
-<template id="sourceItem" class="template">
-    <div class="source__item">
-        <span class="source__item-name"></span>
-    </div>
-</template>
+                            </section>
+                            <section class="categories__brand">
+                                <h2 class="categories__sub-title">Stock</h2>
 
-<script src="./index.js"></script>
+                            </section>
+                        </form>
+                    </div>
+                </div>
+                <div class="grid__cards cards">
+                    <div class="cards__header"></div>
+                    <div class="cards__body"></div>
+                </div>
+            </div>
+        </div>
+        <div class="sources buttons"></div>
+        <div class="cart"></div>
+    </main>
+    <footer>
+        <span class="copyright">Copyright <a href="#">OS</a></span>
+        <a href="#" class="github">
+            <img src="<%= require('./assets/github.svg') %>" alt="github icon" width="30" height="30" />
+        </a>
+        <a href="" class="github">
+            <img src="<%= require('./assets/github.svg') %>" alt="github icon" width="30" height="30" />
+        </a>
+        <span class="date">Dec-2022</span>
+        <a href="https://rs.school/js/" class="course-logo">
+            <img src="<%= require('./assets/rs_school_js.svg') %>" alt="course logo" width="60" />
+        </a>
+    </footer>
+
+    <template id="sourceItem" class="template">
+        <div class="source__item">
+            <span class="source__item-name"></span>
+        </div>
+    </template>
+
+    <script src="./index.js"></script>
 </body>
+
 </html>
