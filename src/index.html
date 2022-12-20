@@ -1,20 +1,161 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>NewsPortal</title>
+    <link rel="stylesheet" href="./style.css">
 </head>
+
 <body>
-<header>
-    <h1>Online Store</h1>
-</header>
-<main>
-    <div class="sources buttons"></div>
-    <div class="cart"></div>
-</main>
-<footer>
+
+
+
+    <div class="wrapper">
+
+        <header class="header">
+            <div class="header__container">
+                <div class="header__logo">
+                    <div class="header__image"><img src="./assets/images/logo.png" alt="" class="header__img"></div>
+                    <h1 class="header__title">Online Store</h1>
+                </div>
+                <div class="header__total">Cart total: €1,647.00</div>
+                <div class="header__card"><img src="./assets/images/cart.png" alt="" class="header__img"></div>
+            </div>
+        </header>
+        <main class="main">
+            <div class="main__container">
+                <div class="main__grid grid">
+                    <div class="grid__filters filters">
+                        <div class="filters__categories categories">
+                            <div class="categories__title">
+                                <button class="categories__reset button">Reset Filters</button>
+                                <button class="categories__copylink button">Copy Link</button>
+                            </div>
+                            <form action="" class="categories__form">
+                                <section class="categories__info">
+
+
+                                    <h2 class="categories__sub-title">Category</h2>
+                                    <div class="categories__items">
+                                        <div class="categories__item">
+                                            <input type="checkbox" name="category" value="smartphones" id="smartphones"
+                                                class="categories__input"><label for="smartphones"
+                                                class="categories__label">smartphones</label><span
+                                                class="categories__quantity quantity-smartphones"></span>
+                                        </div>
+                                        <div class="categories__item">
+                                            <input type="checkbox" name="category" value="laptops" id="laptops"
+                                                class="categories__input"><label for="laptops"
+                                                class="categories__label">laptops</label><span
+                                                class="categories__quantity quantity-laptops"></span>
+                                        </div>
+                                    </div>
+                                </section>
+                                <section class="categories__brand brand">
+                                    <h2 class="brand__sub-title">Brand</h2>
+                                    <div class="brand__items">
+                                        <div class="brand__item">
+                                            <input type="checkbox" name="category" value="apple" id="apple"
+                                                class="brand__input"><label for="apple"
+                                                class="brand__label">apple</label><span
+                                                class="brand__quantity quantity-apple"></span>
+                                        </div>
+                                        <div class="brand__item">
+                                            <input type="checkbox" name="category" value="samsung" id="samsung"
+                                                class="brand__input"><label for="samsung"
+                                                class="brand__label">samsung</label><span
+                                                class="brand__quantity quantity-samsung"></span>
+                                        </div>
+                                    </div>
+                                </section>
+                                <section class="categories__price price">
+                                    <h2 class="price__sub-title">Price</h2>
+                                    <div class="price__item">
+                                        <div class="price__values">
+                                            <span id="range1">
+                                                0
+                                            </span>
+                                            <span> &dash; </span>
+                                            <span id="range2">
+                                                100
+                                            </span>
+                                        </div>
+                                        <div class="price__choice-price">
+                                            <div class="price__track"></div>
+                                            <input type="range" min="0" max="100" value="30" id="slider1"
+                                                oninput="slideOne()" class="price__range">
+                                            <input type="range" min="0" max="100" value="70" id="slider2"
+                                                oninput="slideTwo()" class="price__range">
+                                        </div>
+                                    </div>
+                                </section>
+                                <section class="categories__stock stock">
+                                    <h2 class="stock__sub-title">Stock</h2>
+                                    <div class="stock__item">
+                                        <div class="stock__values">
+                                            <span id="range1">
+                                                0
+                                            </span>
+                                            <span> &dash; </span>
+                                            <span id="range2">
+                                                100
+                                            </span>
+                                        </div>
+                                        <div class="stock__choice-price">
+                                            <div class="stock__track"></div>
+                                            <input type="range" min="0" max="100" value="30" id="stock1"
+                                                oninput="slideOne()" class="stock__range">
+                                            <input type="range" min="0" max="100" value="70" id="stock2"
+                                                oninput="slideTwo()" class="stock__range">
+                                        </div>
+                                    </div>
+                                </section>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="grid__cards cards">
+                        <div class="cards__header">
+                            <div class="cards__sort button">sort options</div>
+                            <div class="cards__found">found:</div>
+                            <div class="class__seach button"><input type="text" placeholder="seach product" class="class__input"></div>
+                            <div class="class__display">
+                                <div class="class__large"></div>
+                                <div class="class__small"></div>
+                            </div>
+                        </div>
+                        <div class="cards__body">
+                            <div class="cards__items">
+                                <div class="class__item card">
+                                 
+                                    <div class="card__image -ibg"><img src="https://i.dummyjson.com/data/products/1/1.jpg" alt=""></div>
+                                    <div class="card__title">iPhone 9</div>
+                                    <div class="card__info">
+                                        <div class="card__category">smartphones</div>
+                                        <div class="card__brand">Apple</div>
+                                        <div class="card__price">549</div>
+                                        <div class="card__discount">12.96</div>
+                                        <div class="card__rating">4.69</div>
+                                        <div class="card__stock">94</div>
+                                    </div>
+                                    <div class="card__buy">
+                                        <div class="card__add"></div>
+                                        <div class="card__detail"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sources buttons"></div>
+            <div class="cart"></div>
+        </main>
+        <footer class="footer">
+            <div class="footer__container">
+
     <span class="copyright">Copyright <a href="#">OS</a></span>
     <a href="#" class="github">
         <img src="<%= require('./assets/images/github.svg') %>" alt="github icon" width="30" height="30"/>
@@ -26,14 +167,18 @@
     <a href="https://rs.school/js/" class="course-logo">
         <img src="<%= require('./assets/images/rs_school_js.svg') %>" alt="course logo" width="60"/>
     </a>
-</footer>
+</div>
+        </footer>
 
-<template id="sourceItem" class="template">
-    <div class="source__item">
-        <span class="source__item-name"></span>
+        <template id="sourceItem" class="template">
+            <div class="source__item">
+                <span class="source__item-name"></span>
+            </div>
+        </template>
     </div>
-</template>
 
-<script src="./index.js"></script>
+    </div>
+    <script src="./index.js"></script>
 </body>
+
 </html>
