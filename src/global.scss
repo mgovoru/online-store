@@ -100,7 +100,8 @@ body {
 .cards__sort,
 .cards__seach,
 .list-products__header,
-.summary__title {
+.summary__title,
+.card-info__header {
 	font-weight: 700;
 	text-transform: uppercase;
 	text-align: center;
@@ -561,4 +562,103 @@ body {
 .input-up::placeholder {
 	color: #D9B282;
 	text-align: center;
+}
+
+.main__menu {
+	padding-top: 64px;
+}
+
+.menu__items {
+	display: flex;
+	gap: 48px;
+	text-transform: uppercase;
+	font-weight: 700;
+	align-items: center;
+}
+
+.menu__item {
+	position: relative;
+}
+
+.menu__item:not(:last-child):after {
+	content: "\00BB";
+	position: absolute;
+	font-size: 36px;
+	font-weight: 700;
+	right: -32px;
+	top: -16px;
+}
+
+.card-info {
+	padding-top: 24px;
+}
+
+.card-info__title {
+	margin-bottom: 16px;
+}
+
+.card-info__content {
+	border-radius: 20px;
+	display: flex;
+	padding: 16px;
+	background-color: #343440;
+	gap: 18px;
+	align-items: center;
+}
+
+.card-info__images {
+	display: flex;
+	flex-direction: column;
+}
+
+.card-info__img-big {
+	border-radius: 20px;
+}
+
+.card-info__img {
+	width: 150px;
+	flex: 1 1 50px;
+	border-radius: 20px;
+	margin-bottom: 16px;
+}
+
+.card-info__block {
+	display: flex;
+	flex-direction: column;
+}
+
+.card-info__cart {
+	display: flex;
+	flex-direction: column;
+	gap: 36px;
+	text-align: center;
+}
+
+.card-info__price {
+	font-size: 36px;
+}
+
+.card-info__title {
+	font-size: 36px;
+}
+
+.card-info__sub-title {
+	font-size: 24px;
+}
+
+.card-info__header {
+	margin-bottom: 16px;
+}
+
+.main__empty-page {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	text-transform: uppercase;
+	font-weight: 700;
+	transform: translate(-50%, -50%);
+	font-size: 48px;
 }
