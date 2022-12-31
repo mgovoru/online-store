@@ -1,4 +1,4 @@
-import Page from '../components/templates/pages';
+import Page from '../../core/templates/pages';
 
 class MainPage extends Page {
 

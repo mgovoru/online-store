@@ -1,4 +1,4 @@
-import Component from '../templates/components';
+import Component from '../../templates/components';
 
 class Header extends Component {
 	constructor(tagName: string, className: string) {
@@ -19,12 +19,12 @@ class Header extends Component {
 		const headerTitle = document.createElement('h1');
 		const headerCardImg = document.createElement('img') as HTMLImageElement;
 		headerImage.classList.add('header__image');
-		if (headerImg != null) { headerImg.src = require('../../assets/images/logo.png'); }
+		if (headerImg != null) { headerImg.src = require('../../../assets/images/logo.png'); }
 		headerImg.classList.add('header__img');
 		headerTitle.classList.add('header__title');
 		if (headerTitle != null) { headerTitle.innerText = 'Online Store'; } 
 		if (headerTotal != null) { headerTotal.innerText = 'Cart total: €1,647.00'; } 
-		if (headerCardImg != null) { headerCardImg.src = require('../../assets/images/cart.png'); } 
+		if (headerCardImg != null) { headerCardImg.src = require('../../../assets/images/cart.png'); }
 		headerContainer.append(headerLogo);
 		headerContainer.append(headerTotal);
 		headerContainer.append(headerCard);

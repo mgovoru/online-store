@@ -1,4 +1,4 @@
-import Component from '../templates/components';
+import Component from '../../templates/components';
 
 class Footer extends Component {
 	constructor(tagName: string, className: string) {
@@ -23,12 +23,12 @@ class Footer extends Component {
 		if (footerImgOne != null) {
 			footerImgOne.width = 30;
 			footerImgOne.height = 30;
-			footerImgOne.src = require('../../assets/images/github.svg');
+			footerImgOne.src = require('../../../assets/images/github.svg');
 		}
 		if (footerImgTwo != null) {
 			footerImgTwo.width = 30;
 			footerImgTwo.height = 30;
-			footerImgTwo.src = require('../../assets/images/github.svg');
+			footerImgTwo.src = require('../../../assets/images/github.svg');
 		}
 		if (footerCopy != null) { footerCopy.innerText = 'Copyright'; }
 		if (footerDate != null) { footerDate.innerText = 'Dec 2022'; }
