@@ -32,8 +32,6 @@ class Header extends Component {
 		headerImage.append(headerImg);
 		headerLogo.append(headerTitle);
 		headerCard.append(headerCardImg);
-		// });
-		
 		this.container.append(headerContainer);
 	}
 

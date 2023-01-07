@@ -5,6 +5,7 @@ abstract class Page {
 		this.container = document.createElement('main');
 		this.container.id = id;
 	}
+
 	render() {
 		return this.container;
 	}

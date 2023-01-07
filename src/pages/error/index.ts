@@ -1,5 +1,4 @@
 import Page from '../../core/templates/pages';
-import createElement from "../../assets/lib/create-element";
 
 export const enum ErrorTypes {
   Error_404 = 404,
