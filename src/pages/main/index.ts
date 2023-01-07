@@ -39,10 +39,12 @@ class MainPage extends Page {
 
 
 	renderMain() {
+		//динамически добавляются элементы на страницу main
 		this.container.classList.add('main');
 		const mainContainer = this.createElementMain('div', 'main__container', this.container);
 		const mainGrid = this.createElementMain('div', 'main__grid', mainContainer, 'grid');
 		const gridFilters = this.createElementMain('div', 'grid__filters', mainGrid, 'filters');
+		//сортировка по категориям
 		const categories = this.createElementMain('div', 'filters__categories', gridFilters, 'categories');
 		const categoriesTitle = this.createElementMain('div', 'categories__title', categories);
 		const categoriesReset = this.createElementMain('button', 'categories__reset', categoriesTitle, 'button');
@@ -68,6 +70,7 @@ class MainPage extends Page {
 			const categoriesQuantity = this.createElementMain('span', 'categories__quantity', categoriesItem, 'quantity-smartphones') as HTMLElement;
 			categoriesQuantity.innerHTML = `${arrayNew.filter(item => (item.category == (categoriesInput.value))).length}`;
 		}
+		//сортировка по брендам
 		const brandsSection = this.createElementMain('section', 'categories__brand', categoriesForm, 'brand');
 		const brandsSubTitle = this.createElementMain('h2', 'brand__sub-title', brandsSection);
 		if (brandsSection != null) { brandsSubTitle.innerText = 'Brand'; }
@@ -86,6 +89,7 @@ class MainPage extends Page {
 			const brandsQuantity = this.createElementMain('span', 'brand__quantity', brandsItem, 'quantity-smartphones');
 
 		}
+		//сортировка по цене
 		const categoriesPrice = this.createElementMain('section', 'categories__price', categoriesForm, 'price');
 		const priceSubTitle = this.createElementMain('h2', 'price__sub-title', categoriesPrice);
 		if (categoriesPrice != null) { priceSubTitle.innerText = 'Price'; }
@@ -115,6 +119,7 @@ class MainPage extends Page {
 		priceInputOne.max = "1749";
 		priceInputOne.value = "10";
 		priceInputOne.id = "slider2";
+		// сортировка по стоку
 		const categoriesStock = this.createElementMain('section', 'categories__stock', categoriesForm, 'stock');
 		const stockSubTitle = this.createElementMain('h2', 'stock__sub-title', categoriesStock);
 		if (categoriesStock != null) { stockSubTitle.innerText = 'Stock'; }
@@ -157,6 +162,7 @@ class MainPage extends Page {
 			optionSort.value = `sort${i}`;
 			optionArray[i] = optionSort;
 		}
+		// сортировка и поиск
 		const cardsFound = this.createElementMain('div', 'cards__found', cardsHeader);
 		cardsFound.innerHTML = 'found:';
 		const cardsSeach = this.createElementMain('div', 'cards__seach', cardsHeader);
@@ -170,6 +176,7 @@ class MainPage extends Page {
 		const cardsItems = this.createElementMain('div', 'cards__items', cardsBody) as HTMLElement;
 
 		cardsAdd(arrayNew.length, arrayNew);
+		// функция, в которую передаются массив, по которому строятся карточки
 		function cardsAdd(numberCards: number, arrayNew: Gadgets[]): void {
 			cardsItems.innerHTML = '';
 			for (let i = 0; i < numberCards; i++) {
@@ -233,75 +240,61 @@ class MainPage extends Page {
 				cardDetail.innerHTML = `details`;
 			}
 		}
-		//
+		// работа со строкой url c params, удалось в строку передать значения, но надо считывать при перезагрузке, с этим буду разбираться. Пока, чтобы обновить строку надо снова запускать startю И с самим алгоритмом проблемы, надо подумать. Пробный вариант. 
 		let url = new URL(window.location.href);
 		let params = new URLSearchParams(url.search);
-		//Add a second foo parameter.
-		//params.append('foo', 4);
-		//Query string is now: 'foo=1&bar=2&foo=4'
 		let arrayFilters: Array<Gadgets> = [];
 		let arrayParamsCategory: Array<string> = [];
 		let arrayParamsBrand: Array<string> = [];
 		let arrayFiltersBrand: Array<Gadgets> = [];
-		categoriesForm.addEventListener('input', (e) => {
-			if ((e.target as HTMLInputElement).checked == true) {
-				params.append((e.target as HTMLInputElement).name, (e.target as HTMLInputElement).value);
-				window.history.pushState({}, '', `${url}?${params.toString()}`);
-				arrayParamsCategory = params.getAll('category');
-				arrayParamsBrand = params.getAll('brands');
-				console.log(arrayParamsCategory);
-				console.log(arrayParamsBrand);	
-		
-				// for (let i = 0; i < arrayParamsCategory.length; i++) {
-				if ((e.target as HTMLInputElement).name == 'category') {
-				
-					arrayFilters = arrayFilters.concat(arrayNew.filter(item => item.category == (e.target as HTMLInputElement).value));
+		categoriesForm.addEventListener('change', (e) => {
+			arrayFilters.length = 0;
+			arrayFiltersBrand.length = 0;
+			if ((e.target as HTMLInputElement).checked != true) {
+				const values = params.getAll((e.target as HTMLInputElement).name);
+				if (values.length) {
+					params.delete((e.target as HTMLInputElement).name);
+					for (const value of values) {
+						if (value !== (e.target as HTMLInputElement).value) {
+							params.append((e.target as HTMLInputElement).name, (e.target as HTMLInputElement).value);
+						}
+					}
 				}
-					console.log(arrayFilters);
-				// }
-				
-				
-			// for (let i = 0; i < arrayParamsBrand.length; i++)
-			// 	{
-				
-				if (arrayParamsBrand.length != 0) {
-					for (let i = 0; i <= arrayParamsBrand.length; i++)
-						arrayFiltersBrand = arrayFiltersBrand.concat(arrayFilters.filter(item => item.brand == arrayParamsBrand[i]));
-				} else { arrayFiltersBrand = arrayFilters; }
-		
-				// }
-				// console.log(arrayFilters);
+			}
+			else {
+				params.append((e.target as HTMLInputElement).name, (e.target as HTMLInputElement).value);
+			}
+			window.history.pushState({}, '', `${url}?${params.toString()}`);
+
+
+
+			arrayParamsCategory = params.getAll('category');
+			arrayParamsBrand = params.getAll('brands');
+			console.log(arrayParamsCategory);
+			console.log(arrayParamsBrand);
+			if (arrayParamsCategory.length != 0) {
+				for (let i = 0; i <= arrayParamsCategory.length; i++) {
+					arrayFilters = arrayFilters.concat(arrayNew.filter(item => item.category == arrayParamsCategory[i]));
+				}
+			} else arrayFilters = arrayNew;
+
+			if (arrayParamsBrand.length != 0) {
+				for (let i = 0; i <= arrayParamsBrand.length; i++)
+					arrayFiltersBrand = arrayFiltersBrand.concat(arrayFilters.filter(item => item.brand == arrayParamsBrand[i]));
+			} else { arrayFiltersBrand = arrayFilters; }
+			// выводимые количества должны пересчитываться, надо еще подумать.
+			if ((e.target as HTMLInputElement).name == 'category') {
 				const arrayFiltersLength = arrayNew.filter(item => (item.category == (e.target as HTMLInputElement).value));
 				((e.target as HTMLInputElement).parentNode?.lastChild as HTMLElement).innerHTML = `${arrayFiltersLength.length} / ${arrayFiltersLength.length}`;
-				// arrayFilters = arrayFilters.concat(arrayNew.filter(item => (item.category == (e.target as HTMLInputElement).value)));
-				cardsAdd(arrayFiltersBrand.length, arrayFiltersBrand);
 			}
-			if ((e.target as HTMLInputElement).checked == false) {
-				// cardsItems.innerHTML = ''
-				// ((e.target as HTMLInputElement).parentNode?.lastChild as HTMLElement).innerHTML = `${arrayNew.filter(item => (item.category == (e.target as HTMLInputElement).value)).length}`;
-				// arrayFilters = arrayFilters.filter(item => !(item.category == (e.target as HTMLInputElement).value));
-				// cardsAdd(arrayFilters.length, arrayFilters);
-				// if (arrayFilters.length == 0) { cardsAdd(arrayNew.length, arrayNew); }
+			if ((e.target as HTMLInputElement).name == 'brands') {
+				const arrayFiltersLength = arrayNew.filter(item => (item.brand == (e.target as HTMLInputElement).value));
+				((e.target as HTMLInputElement).parentNode?.lastChild as HTMLElement).innerHTML = `${arrayFiltersLength.length} / ${arrayFiltersLength.length}`;
 			}
-		})
-		// let arrayFiltersBrands: Array<Gadgets> = [];
-		// brandsItems.addEventListener('input', (e) => {
-		// 	if (arrayFilters.length == 0) { arrayFiltersBrands = arrayNew; }
-		// 	if ((e.target as HTMLInputElement).checked == true) {
-		// 		const arrayFiltersLengthBrands = arrayNew.filter(item => (item.brand == (e.target as HTMLInputElement).value));
-		// 		((e.target as HTMLInputElement).parentNode?.lastChild as HTMLElement).innerHTML = `${arrayFiltersLengthBrands.length} / ${arrayFiltersLengthBrands.length}`;
-		// 		arrayFiltersBrands = arrayFiltersBrands.concat(arrayFilters.filter(item => (item.brand == (e.target as HTMLInputElement).value)));
-		// 		cardsAdd(arrayFiltersBrands.length, arrayFiltersBrands);
-		// 	}
-		// 	if ((e.target as HTMLInputElement).checked == false) {
-		// 		cardsItems.innerHTML = '';
-		// 		((e.target as HTMLInputElement).parentNode?.lastChild as HTMLElement).innerHTML = `${arrayNew.filter(item => (item.brand == (e.target as HTMLInputElement).value)).length}`;
-		// 		arrayFiltersBrands = arrayFiltersBrands.filter(item => !(item.brand == (e.target as HTMLInputElement).value));
-		// 		cardsAdd(arrayFiltersBrands.length, arrayFiltersBrands);
-		// 	}
 
-		// })
-
+			cardsAdd(arrayFiltersBrand.length, arrayFiltersBrand);
+		}
+		)
 	}
 	render() {
 		this.renderMain();
