@@ -329,7 +329,12 @@ body {
   position: relative;
 }
 
-.categories__quantity {
+.brand__item {
+  position: relative;
+}
+
+.categories__quantity,
+.brand__quantity {
   position: absolute;
   right: 8px;
   top: 50%;
