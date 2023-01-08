@@ -9,7 +9,10 @@ class Header extends Component {
 		const headerContainer = document.createElement('div');
 		const headerLogo = document.createElement('div');
 		const headerTotal = document.createElement('div');
-		const headerCard = document.createElement('div');
+		const headerCard = document.createElement('a') as HTMLAnchorElement;
+		headerCard.href = '#cart-page';
+		headerCard.addEventListener('click', () => { window.history.pushState({}, '', `/`); });
+		window.history.pushState({}, '', `/`);
 		headerContainer.classList.add('header__container');
 		headerLogo.classList.add('header__logo');
 		headerTotal.classList.add('header__total');

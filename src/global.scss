@@ -43,13 +43,6 @@ body {
 	order: 3
 }
 
-// .footer {
-// 	position: absolute;
-// 	bottom: 0;
-// 	left: 0;
-// 	width:100%;
-// }
-
 .header__title {
 	font-size: 36px;
 	font-weight: 700;
@@ -131,6 +124,20 @@ body {
 	border: 2px solid #D95F18;
 }
 
+
+.categories__reset,
+.categories__copylink,
+.cards__sort,
+.cards__seach {
+	font-size: 16px;
+}
+
+.cards__seach {
+	flex: 1 1 auto;
+}
+
+
+
 .button {
 	transition: all 1s;
 }
@@ -154,9 +161,9 @@ body {
 .price__title,
 .stock__title {
 	display: flex;
-	justify-content: center;
+	justify-content: space-between;
 	gap: 36px;
-	padding: 16px;
+	padding: 16px 0;
 }
 
 .button,
@@ -237,9 +244,11 @@ body {
 .categories__item {
 	position: relative;
 }
+
 .brand__item {
 	position: relative;
 }
+
 .categories__quantity,
 .brand__quantity {
 	position: absolute;
@@ -321,14 +330,20 @@ body {
 .cards__header {
 	display: flex;
 	align-items: center;
-	justify-content: center;
+	justify-content: space-between;
 	gap: 124px;
-	padding: 16px 0 16px 90px;
+	padding: 16px 0;
+
+}
+
+.cards__display {
+	display: none;
 }
 
 .cards__input {
-	display: block;
+
 	width: 100%;
+	display: block;
 	border: none;
 	outline: none;
 	background-color: #343440;
@@ -336,9 +351,13 @@ body {
 }
 
 .cards__input::placeholder {
+	width: 100%;
 	color: #D9B282;
 	font-size: 16px;
 	text-align: center;
+	font-weight: 700;
+	text-transform: uppercase;
+	// padding: 8px 48px;
 }
 
 .cards__body {
@@ -356,8 +375,7 @@ body {
 .cards__items {
 	display: flex;
 	flex-wrap: wrap;
-	gap: 16px;
-	justify-content: space-between;
+	gap: 24px;
 	padding: 24px;
 }
 
@@ -460,7 +478,7 @@ body {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	padding: 8px;
+	padding: 8px 24px;
 }
 
 .summary__title {
@@ -493,7 +511,7 @@ body {
 }
 
 .product-cart__image {
-	flex: 0 1 30%;
+	flex: 0 0 200px;
 	padding-top: 20%;
 }
 
@@ -513,6 +531,7 @@ body {
 }
 
 .product-cart__account {
+	flex: 0 0 300px;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -551,12 +570,13 @@ body {
 	background-color: #6883A6;
 	color: #D9B282;
 	border-radius: 20px;
-	padding: 8px;
+	padding: 8px 24px;
 }
 
 .summary__promokod::placeholder {
 	color: #D9B282;
 	text-align: center;
+
 }
 
 .pop-up {
@@ -611,6 +631,7 @@ body {
 	text-transform: uppercase;
 	font-weight: 700;
 	align-items: center;
+	font-size: 24px;
 }
 
 .menu__item {
@@ -623,14 +644,18 @@ body {
 	font-size: 36px;
 	font-weight: 700;
 	right: -32px;
-	top: -16px;
+	top: -12px;
 }
 
 .card-info {
 	padding-top: 24px;
 }
 
-.card-info__title {
+.card-info__header {
+	font-size: 24px;
+}
+
+.card-info__sub-title {
 	margin-bottom: 16px;
 }
 
@@ -676,7 +701,8 @@ body {
 }
 
 .card-info__title {
-	font-size: 36px;
+	font-size: 28px;
+	font-weight: 500;
 }
 
 .card-info__sub-title {
@@ -690,6 +716,7 @@ body {
 .main__empty-page {
 	display: flex;
 	justify-content: center;
+	text-align: center;
 	align-items: center;
 	position: absolute;
 	left: 50%;
