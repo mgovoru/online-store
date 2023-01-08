@@ -22,7 +22,13 @@ class Header extends Component {
 		if (headerImg != null) { headerImg.src = require('../../../assets/images/logo.png'); }
 		headerImg.classList.add('header__img');
 		headerTitle.classList.add('header__title');
-		if (headerTitle != null) { headerTitle.innerText = 'Online Store'; } 
+		if (headerTitle != null) {
+			const logoLink = document.createElement('a');
+			logoLink.href = '/';
+			logoLink.title = 'Online Store homePage';
+			logoLink.innerText = 'Online Store';
+			headerTitle.append(logoLink);
+		}
 		if (headerTotal != null) { headerTotal.innerText = 'Cart total: €1,647.00'; } 
 		if (headerCardImg != null) { headerCardImg.src = require('../../../assets/images/cart.png'); }
 		headerContainer.append(headerLogo);

@@ -1,123 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Online store</title>
-	<link rel="stylesheet" href="./global.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Online store</title>
+    <link rel="stylesheet" href="./global.css">
 </head>
-
 <body>
+<div class="wrapper">
+    <header class="header">
+        <div class="header__container">
+            <div class="header__logo">
+                <div class="header__image">
+                    <img src="<%= require('./assets/images/logo.png') %>" alt="" class="header__img">
+                </div>
+                <h1 class="header__title">Online Store</h1>
+            </div>
+            <div class="header__total">Cart total: €1,647.00</div>
+            <div class="header__card"><img src="<%= require('./assets/images/cart.png') %>" alt=""></div>
+        </div>
+    </header>
+    <main class="main">
+        <div class="main__container">
+            <div class="main__cart-grid">
+                <div class="main__list-grid list-products">
+                    <div class="list-products__header">
+                        <div class="list-products__title">
+                            Products In Cart
+                        </div>
+                        <div class="list-products__items">
+                            items: <span> 1</span>
+                        </div>
+                        <div class="list-products__pages">
+                            pages: <span> 1</span>
+                        </div>
+                    </div>
+                    <div class="list-products__body product-cart">
+                        <div class="product-cart__item">
+                            <div class="product-cart__number">1</div>
+                            <div class="product-cart__image -ibg"><img
+                                    src="https://i.dummyjson.com/data/products/1/1.jpg" alt=""
+                                    class="product-cart__img"></div>
 
+                            <div class="product-cart__info">
+                                <div class="product-cart__title">iPhone 9</div>
+                                <div class="product-cart__description">An apple mobile which is nothing like apple
+                                </div>
+                            </div>
+                            <div class="product-cart__account">
+                                <div class="product-cart__stock">stock: <span>94</span></div>
+                                <div class="product-cart__amount"><span>+</span> 3 <span>-</span></div>
+                                <div class="product-cart__price">price: <span>549</span></div>
+                            </div>
+                        </div>
 
-
-	<div class="wrapper">
-
-		<header class="header">
-			<div class="header__container">
-				<div class="header__logo">
-					<div class="header__image"><img src="<%= require('./assets/images/logo.png') %>" alt=""
-							class="header__img"></div>
-					<h1 class="header__title">Online Store</h1>
-				</div>
-				<div class="header__total">Cart total: €1,647.00</div>
-				<div class="header__card"><img src="<%= require('./assets/images/cart.png') %>" alt=""></div>
-			</div>
-		</header>
-		<main class="main">
-			<div class="main__container">
-				<div class="main__cart-grid">
-					<div class="main__list-grid list-products">
-						<div class="list-products__header">
-							<div class="list-products__title">
-								Products In Cart
-							</div>
-							<div class="list-products__items">
-								items: <span> 1</span>
-							</div>
-							<div class="list-products__pages">
-								pages: <span> 1</span>
-							</div>
-						</div>
-
-						<div class="list-products__body product-cart">
-							<!-- пример товара в корзине -->
-							<div class="product-cart__item">
-								<div class="product-cart__number">1</div>
-								<div class="product-cart__image -ibg"><img
-										src="https://i.dummyjson.com/data/products/1/1.jpg" alt=""
-										class="product-cart__img"></div>
-
-								<div class="product-cart__info">
-									<div class="product-cart__title">iPhone 9</div>
-									<div class="product-cart__description">An apple mobile which is nothing like apple
-									</div>
-								</div>
-								<div class="product-cart__account">
-									<div class="product-cart__stock">stock: <span>94</span></div>
-									<div class="product-cart__amount"><span>+</span> 3 <span>-</span></div>
-									<div class="product-cart__price">price: <span>549</span></div>
-								</div>
-							</div>
-
-						</div>
-					</div>
-					<div class="main__list-summary summary">
-						<div class="summary__title">
-							Products In Cart
-						</div>
-						<div class="summary__item">
-							<div class="summary__products">products:<span> 4</span></div>
-							<div class="summary__total">total: <span>€2,546.00</span></div>
-							<input class="summary__promokod" type="text" placeholder="enter promokod">
-							<div class="summary__button button">buy now</div>
-						</div>
-					</div>
-				</div>
-			</div>
-
-
-			<div class="sources buttons"></div>
-			<div class="cart"></div>
-			<div class="pop-up">
-				<form action="#" class="pop-up__form">
-					<div class="pop-up__title">personal details</div>
-					<input class="pop-up__name input-up" placeholder="name" type="text" name="name">
-					<input class="pop-up__phone input-up" placeholder="phone number" type="tel" name="phone">
-					<input class="pop-up__address input-up" placeholder="delivery address" type="text" name="address">
-					<input class="pop-up__email input-up" placeholder="e-mail" type="email" name="e-mail">
-					<div class="pop-up__card"></div>
-					<div class="pop-up__button button">confirm</div>
-				</form>
-			</div>
-		</main>
-		<footer class="footer">
-			<div class="footer__container">
-
-				<span class="copyright">Copyright <a href="#">OS</a></span>
-				<a href="#" class="github">
-					<img src="<%= require('./assets/images/github.svg') %>" alt="github icon" width="30" height="30" />
-				</a>
-				<a href="" class="github">
-					<img src="<%= require('./assets/images/github.svg') %>" alt="github icon" width="30" height="30" />
-				</a>
-				<span class="date">Dec-2022</span>
-				<a href="https://rs.school/js/" class="course-logo">
-					<img src="<%= require('./assets/images/rs_school_js.svg') %>" alt="course logo" width="60" />
-				</a>
-			</div>
-		</footer>
-
-		<template id="sourceItem" class="template">
-			<div class="source__item">
-				<span class="source__item-name"></span>
-			</div>
-		</template>
-	</div>
-
-	<script src="./index.js"></script>
+                    </div>
+                </div>
+                <div class="main__list-summary summary">
+                    <div class="summary__title">
+                        Products In Cart
+                    </div>
+                    <div class="summary__item">
+                        <div class="summary__products">products:<span> 4</span></div>
+                        <div class="summary__total">total: <span>€2,546.00</span></div>
+                        <input class="summary__promokod" type="text" placeholder="enter promokod">
+                        <div class="summary__button button">buy now</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sources buttons"></div>
+        <div class="cart"></div>
+        <div class="pop-up">
+            <form action="#" class="pop-up__form">
+                <div class="pop-up__title">personal details</div>
+                <input class="pop-up__name input-up" placeholder="name" type="text" name="name">
+                <input class="pop-up__phone input-up" placeholder="phone number" type="tel" name="phone">
+                <input class="pop-up__address input-up" placeholder="delivery address" type="text" name="address">
+                <input class="pop-up__email input-up" placeholder="e-mail" type="email" name="e-mail">
+                <div class="pop-up__card"></div>
+                <div class="pop-up__button button">confirm</div>
+            </form>
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="footer__container">
+            <span class="copyright">Copyright <a href="#">OS</a></span>
+            <a href="#" class="github">
+                <img src="<%= require('./assets/images/github.svg') %>" alt="github icon" width="30" height="30"/>
+            </a>
+            <a href="" class="github">
+                <img src="<%= require('./assets/images/github.svg') %>" alt="github icon" width="30" height="30"/>
+            </a>
+            <span class="date">Dec-2022</span>
+            <a href="https://rs.school/js/" class="course-logo">
+                <img src="<%= require('./assets/images/rs_school_js.svg') %>" alt="course logo" width="60"/>
+            </a>
+        </div>
+    </footer>
+    <template id="sourceItem" class="template">
+        <div class="source__item">
+            <span class="source__item-name"></span>
+        </div>
+    </template>
+</div>
+<script src="./index.js"></script>
 </body>
-
 </html>

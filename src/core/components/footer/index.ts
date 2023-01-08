@@ -18,12 +18,12 @@ class Footer extends Component {
 		footerDate.classList.add('date');
 		const footerImgOne = document.createElement('img') as HTMLImageElement;
 		const footerImgTwo = document.createElement('img') as HTMLImageElement;
-		if (footerGithubOne != null) { footerGithubOne.href = 'https://github.com'; }
+		if (footerGithubOne != null) { footerGithubOne.href = 'https://rs.school/js/'; }
 		if (footerGithubTwo != null) { footerGithubTwo.href = 'https://github.com/mgovoru'; }
 		if (footerImgOne != null) {
 			footerImgOne.width = 30;
 			footerImgOne.height = 30;
-			footerImgOne.src = require('../../../assets/images/github.svg');
+			footerImgOne.src = require('../../../assets/images/rs_school_js.svg');
 		}
 		if (footerImgTwo != null) {
 			footerImgTwo.width = 30;
@@ -31,7 +31,11 @@ class Footer extends Component {
 			footerImgTwo.src = require('../../../assets/images/github.svg');
 		}
 		if (footerCopy != null) { footerCopy.innerText = 'Copyright'; }
-		if (footerDate != null) { footerDate.innerText = 'Dec 2022'; }
+		if (footerDate != null) {
+			const month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+			const dt = new Date();
+			footerDate.innerText = `${month[dt.getMonth()]} ${dt.getFullYear()}`;
+		}
 		footerContainer.append(footerCopy);
 		footerContainer.append(footerGithubOne);
 		footerContainer.append(footerGithubTwo);
