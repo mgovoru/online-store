@@ -20,8 +20,7 @@ const converted: Array<Gadgets> = data.map(item => ({
 	images: [item.images[0], item.images[2], item.images[3], item.images[4], item.images[4]],
 }));
 
-let arrayNew: Gadgets[] = [];
-arrayNew = converted;
+let arrayNew: Gadgets[] = converted;
 
 
 class MainPage extends Page {
@@ -100,11 +99,11 @@ class MainPage extends Page {
 		const priceRangeOne = this.createElementMain('span', 'price__range1', priceValues);
 		priceRangeOne.id = "range1";
 		priceRangeOne.innerHTML = "10";
-		const priceRangeZero = this.createElementMain('span', 'price__range0', priceValues);
-		priceRangeZero.innerHTML = "";
+		// const priceRangeZero = this.createElementMain('span', 'price__range0', priceValues);
+		// priceRangeZero.innerHTML = "";
 		const priceRangeTwo = this.createElementMain('span', 'price__range2', priceValues);
 		priceRangeTwo.id = "range2";
-		priceRangeZero.innerHTML = "1949";
+		priceRangeTwo.innerHTML = "-- 1949";
 		const priceChoice = this.createElementMain('div', 'price__choice-price', priceItem);
 		const priceTrack = this.createElementMain('span', 'price__track', priceChoice);
 		priceRangeOne.id = "range1";
@@ -183,7 +182,7 @@ class MainPage extends Page {
 		cardsAdd(arrayNew.length, arrayNew);
 
 		// функция, в которую передаются массив, по которому строятся карточки
-		function cardsAdd(numberCards: number, arrayNew: Gadgets[]): void {
+		function cardsAdd(numberCards: number, arrayCards: Gadgets[]): void {
 			cardsItems.innerHTML = '';
 			for (let i = 0; i < numberCards; i++) {
 				const cardsItem = document.createElement('a') as HTMLAnchorElement;
@@ -198,30 +197,30 @@ class MainPage extends Page {
 				cardImg.classList.add('card__img');
 				cardImage.append(cardImg);
 				cardImg.loading = "lazy";
-				cardImg.src = `${arrayNew[i].thumbnail}`;
+				cardImg.src = `${arrayCards[i].thumbnail}`;
 				const cardInfo = document.createElement('div');
 				cardInfo.classList.add('card__info');
 				cardsItem.append(cardInfo);
 				const cardTitle = document.createElement('div');
 				cardTitle.classList.add('card__title');
 				cardInfo.append(cardTitle);
-				cardTitle.innerHTML = `${arrayNew[i].title}`;
+				cardTitle.innerHTML = `${arrayCards[i].title}`;
 				const cardCategory = document.createElement('div');
 				cardCategory.classList.add('card__category');
 				cardInfo.append(cardCategory);
-				cardCategory.innerHTML = `category:\n${arrayNew[i].category}`;
+				cardCategory.innerHTML = `category:\n${arrayCards[i].category}`;
 				const cardBrand = document.createElement('div');
 				cardBrand.classList.add('card__brand');
 				cardInfo.append(cardBrand);
-				cardBrand.innerHTML = `brand:\n${arrayNew[i].brand}`;
+				cardBrand.innerHTML = `brand:\n${arrayCards[i].brand}`;
 				const cardPrice = document.createElement('div');
 				cardPrice.classList.add('card__price');
 				cardInfo.append(cardPrice);
-				cardPrice.innerHTML = `price:\n${arrayNew[i].price}$`;
+				cardPrice.innerHTML = `price:\n${arrayCards[i].price}$`;
 				const cardDiscount = document.createElement('div');
 				cardDiscount.classList.add('card__discount');
 				cardInfo.append(cardDiscount);
-				cardDiscount.innerHTML = `discount:\n${arrayNew[i].discountPercentage}$`;
+				cardDiscount.innerHTML = `discount:\n${arrayCards[i].discountPercentage}$`;
 				const cardRating = document.createElement('div');
 				cardRating.classList.add('card__rating');
 				cardInfo.append(cardRating);
@@ -229,14 +228,14 @@ class MainPage extends Page {
 				const cardStock = document.createElement('div');
 				cardStock.classList.add('card__stock');
 				cardInfo.append(cardStock);
-				cardStock.innerHTML = `stock:\n${arrayNew[i].stock}$`;
+				cardStock.innerHTML = `stock:\n${arrayCards[i].stock}$`;
 				const cardBuy = document.createElement('div');
 				cardBuy.classList.add('card__buy');
 				cardsItem.append(cardBuy);
 				const cardAdd = document.createElement('a') as HTMLAnchorElement;
 				cardAdd.addEventListener('click', () => {
 
-					arrayIdCards.push(`${arrayNew[i].id}`);
+					arrayIdCards.push(`${arrayCards[i].id}`);
 					localStorage.setItem('idCardBuy', JSON.stringify(arrayIdCards));
 				});
 				cardAdd.classList.add('card__add');
@@ -251,7 +250,7 @@ class MainPage extends Page {
 				cardDetail.href = '#catalog-page';
 				cardDetail.addEventListener('click', () => {
 					window.history.pushState({}, '', `/`);
-					localStorage.setItem('id', `${arrayNew[i].id}`);
+					localStorage.setItem('id', `${arrayCards[i].id}`);
 				});
 			}
 		}
@@ -263,6 +262,7 @@ class MainPage extends Page {
 		let arrayParamsCategory: Array<string> = [];
 		let arrayParamsBrand: Array<string> = [];
 		let arrayFiltersBrand: Array<Gadgets> = [];
+		let arrayNewChange: Array<Gadgets> = arrayNew;
 		categoriesForm.addEventListener('change', (e) => {
 			arrayFilters.length = 0;
 			arrayFiltersBrand.length = 0;
@@ -279,42 +279,51 @@ class MainPage extends Page {
 			} else {
 				params.append((e.target as HTMLInputElement).name, (e.target as HTMLInputElement).value);
 			}
-			window.history.pushState({}, '', `${url}?${params.toString()}`);
-
 
 			arrayParamsCategory = params.getAll('category');
 			arrayParamsBrand = params.getAll('brands');
-
 			if (arrayParamsCategory.length != 0) {
 				for (let i = 0; i < arrayParamsCategory.length; i++) {
 					arrayFilters = arrayFilters.concat(arrayNew.filter(item => item.category == arrayParamsCategory[i]));
 				}
-			} else arrayFilters = arrayNew;
-
-			if (arrayParamsBrand.length != 0) {
-				for (let i = 0; i < arrayParamsBrand.length; i++)
-					arrayFiltersBrand = arrayFiltersBrand.concat(arrayFilters.filter(item => item.brand == arrayParamsBrand[i]));
 			} else {
-				arrayFiltersBrand = arrayFilters;
+				arrayFilters = arrayNew.slice();;
 			}
+			if (arrayParamsBrand.length != 0) {
+				for (let i = 0; i < arrayParamsBrand.length; i++) { arrayFiltersBrand = arrayFiltersBrand.concat(arrayFilters.filter(item => item.brand == arrayParamsBrand[i])); }
+			} else {
+				arrayFiltersBrand = arrayFilters.slice();
+			}
+
+			let arrayInputPrice = document.querySelectorAll('.price__range');
+			let arrayInputRangeOne = document.querySelector('#range1');
+			let arrayInputRangeTwo = document.querySelector('#range2');
+			if (((e.target as HTMLInputElement).id == 'slider1') && (arrayInputRangeOne != null)) {
+				arrayInputRangeOne.innerHTML = `${(e.target as HTMLInputElement).value} -- `;
+				params.set('minprice', (e.target as HTMLInputElement).value);
+			}
+			if (((e.target as HTMLInputElement).id == 'slider2') && (arrayInputRangeTwo != null)) {
+				arrayInputRangeTwo.innerHTML = `-- ${(e.target as HTMLInputElement).value}`;
+				params.set('maxprice', (e.target as HTMLInputElement).value);
+			}
+
+			arrayFiltersBrand = arrayFiltersBrand.filter(item => (item.price > Number(params.get('minprice')) && (item.price < Number(Number(params.get('maxprice'))))));
+
 			// выводимые количества должны пересчитываться, надо еще подумать.
 			let arrayNumberQuantity = document.querySelectorAll('.categories__quantity');
 			let arrayNumberBrands = document.querySelectorAll('.brand__quantity');
 			for (let i = 0; i < listCategories.length; i++) {
 				let amountCategory = arrayFiltersBrand.filter(item => (item.category == listCategories[i])).length;
-				console.log(amountCategory);
 				let amountCategoryAll = arrayNew.filter(item => (item.category == listCategories[i])).length;
-				console.log(amountCategoryAll);
-					((arrayNumberQuantity[i]) as HTMLElement).innerHTML = `${amountCategory} / ${amountCategoryAll}`;
+				((arrayNumberQuantity[i]) as HTMLElement).innerHTML = `${amountCategory} / ${amountCategoryAll}`;
 			}
 			for (let i = 0; i < listBrends.length; i++) {
 				let amountBrand = arrayFiltersBrand.filter(item => (item.brand == listBrends[i])).length;
-				console.log(amountBrand);
 				let amountBrandAll = arrayNew.filter(item => (item.brand == listBrends[i])).length;
-				console.log(amountBrandAll);
 				((arrayNumberBrands[i]) as HTMLElement).innerHTML = `${amountBrand} / ${amountBrandAll}`;
 			}
 
+			window.history.pushState({}, '', `${url}?${params.toString()}`);
 			cardsAdd(arrayFiltersBrand.length, arrayFiltersBrand);
 		}
 		)
