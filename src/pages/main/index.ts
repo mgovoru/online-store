@@ -118,7 +118,7 @@ class MainPage extends Page {
 		priceInputOne.type = "range";
 		priceInputOne.min = "10";
 		priceInputOne.max = "1749";
-		priceInputOne.value = "10";
+		priceInputOne.value = "1749";
 		priceInputOne.id = "slider2";
 		// сортировка по стоку
 		const categoriesStock = this.createElementMain('section', 'categories__stock', categoriesForm, 'stock');
@@ -249,7 +249,8 @@ class MainPage extends Page {
 				cardDetail.innerHTML = `details`;
 				cardDetail.href = '#catalog-page';
 				cardDetail.addEventListener('click', () => {
-					window.history.pushState({}, '', `/`);
+					//window.history.pushState({}, '', `/`);
+					window.history.replaceState(null, '', window.location.pathname);
 					localStorage.setItem('id', `${arrayCards[i].id}`);
 				});
 			}
@@ -258,6 +259,8 @@ class MainPage extends Page {
 		// работа со строкой url c params, удалось в строку передать значения, но надо считывать при перезагрузке, с этим буду разбираться. Пока, чтобы обновить строку надо снова запускать startю И с самим алгоритмом проблемы, надо подумать. Пробный вариант.
 		let url = new URL(window.location.href);
 		let params = new URLSearchParams(url.search);
+		params.set('maxprice', '1749');
+		params.set('minprice', '10');
 		let arrayFilters: Array<Gadgets> = [];
 		let arrayParamsCategory: Array<string> = [];
 		let arrayParamsBrand: Array<string> = [];
@@ -307,7 +310,7 @@ class MainPage extends Page {
 				params.set('maxprice', (e.target as HTMLInputElement).value);
 			}
 
-			arrayFiltersBrand = arrayFiltersBrand.filter(item => (item.price > Number(params.get('minprice')) && (item.price < Number(Number(params.get('maxprice'))))));
+			arrayFiltersBrand = arrayFiltersBrand.filter(item => (item.price > Number(params.get('minprice')) && (item.price < Number(params.get('maxprice')))));
 
 			// выводимые количества должны пересчитываться, надо еще подумать.
 			let arrayNumberQuantity = document.querySelectorAll('.categories__quantity');
