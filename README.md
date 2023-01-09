@@ -28,4 +28,4 @@ https://github.com/rolling-scopes-school/tasks/tree/master/tasks/online-store-te
 
 ## ссылка на деплой
 
-https://mgovoru-markkulua-online-store-199fb4.netlify.app/
+https://mgovoru.github.io/online-store/dist/index.html
