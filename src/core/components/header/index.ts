@@ -11,8 +11,6 @@ class Header extends Component {
 		const headerTotal = document.createElement('div');
 		const headerCard = document.createElement('a') as HTMLAnchorElement;
 		headerCard.href = '#cart-page';
-		headerCard.addEventListener('click', () => { window.history.pushState({}, '', `/`); });
-		window.history.pushState({}, '', `/`);
 		headerContainer.classList.add('header__container');
 		headerLogo.classList.add('header__logo');
 		headerTotal.classList.add('header__total');
@@ -27,12 +25,12 @@ class Header extends Component {
 		headerTitle.classList.add('header__title');
 		if (headerTitle != null) {
 			const logoLink = document.createElement('a');
-			logoLink.href = '/';
+			logoLink.href = '#main-page';
 			logoLink.title = 'Online Store homePage';
 			logoLink.innerText = 'Online Store';
 			headerTitle.append(logoLink);
 		}
-		if (headerTotal != null) { headerTotal.innerText = 'Cart total: €1,647.00'; } 
+		if (headerTotal != null) { headerTotal.innerText = 'Cart total: €1,647.00'; }
 		if (headerCardImg != null) { headerCardImg.src = require('../../../assets/images/cart.png'); }
 		headerContainer.append(headerLogo);
 		headerContainer.append(headerTotal);

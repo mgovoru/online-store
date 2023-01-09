@@ -51,6 +51,7 @@ class App {
     private enableRouteChange() {
         window.addEventListener('hashchange', () => {
             const hash = window.location.hash.slice(1);
+            window.history.replaceState(null, '', window.location.pathname);
             App.renderNewPage(hash);
         });
     }
