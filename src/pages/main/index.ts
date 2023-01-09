@@ -233,9 +233,21 @@ class MainPage extends Page {
 				cardBuy.classList.add('card__buy');
 				cardsItem.append(cardBuy);
 				const cardAdd = document.createElement('a') as HTMLAnchorElement;
+				cardAdd.style.width = '140px';
 				cardAdd.addEventListener('click', () => {
+					if (cardAdd.innerHTML == `add to cart`) {
+						cardAdd.innerHTML = `drop from cart`; arrayIdCards.push(`${arrayCards[i].id}`);
+						cardAdd.style.backgroundColor = 'white';
+						cardAdd.style.color = `#D95F18`;
+					} else {
+						cardAdd.innerHTML = `add to cart`;
+						arrayIdCards = arrayIdCards.filter(item => {
+							item != `${arrayCards[i].id}`;
+							cardAdd.style.backgroundColor = '#343440';
+							cardAdd.style.color = `#D9B282`;
+						})
+					}
 
-					arrayIdCards.push(`${arrayCards[i].id}`);
 					localStorage.setItem('idCardBuy', JSON.stringify(arrayIdCards));
 				});
 				cardAdd.classList.add('card__add');
@@ -253,6 +265,8 @@ class MainPage extends Page {
 					window.history.replaceState(null, '', window.location.pathname);
 					localStorage.setItem('id', `${arrayCards[i].id}`);
 				});
+
+
 			}
 		}
 

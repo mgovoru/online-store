@@ -10,7 +10,9 @@ class Header extends Component {
 		const headerLogo = document.createElement('div');
 		const headerTotal = document.createElement('div');
 		const headerCard = document.createElement('a') as HTMLAnchorElement;
+		const headerCardQuantity = document.createElement('div') as HTMLInputElement;
 		headerCard.href = '#cart-page';
+		headerCardQuantity.classList.add('header__quantity');
 		headerContainer.classList.add('header__container');
 		headerLogo.classList.add('header__logo');
 		headerTotal.classList.add('header__total');
@@ -39,8 +41,15 @@ class Header extends Component {
 		headerImage.append(headerImg);
 		headerLogo.append(headerTitle);
 		headerCard.append(headerCardImg);
+		headerCard.append(headerCardQuantity);
 		this.container.append(headerContainer);
-	}
+		let arrayLocal = localStorage.getItem('idCardBuy');
+		if (arrayLocal != null) {
+			let arrayidBuylength = (JSON.parse(arrayLocal)).length;
+			headerCardQuantity.innerHTML = arrayidBuylength;
+		}
+		}
+	
 
 	render() {
 		this.renderHeader();

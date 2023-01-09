@@ -43,6 +43,8 @@ body {
 	order: 3
 }
 
+
+
 .header__title {
 	font-size: 36px;
 	font-weight: 700;
@@ -67,6 +69,9 @@ body {
 	gap: 16px;
 }
 
+.header__card {
+	position: relative;
+}
 
 [class*="__container"] {
 	margin: 0 auto;
@@ -85,6 +90,10 @@ body {
 	top: 0;
 	left: 0;
 	object-fit: cover;
+}
+
+.main__container {
+	padding-bottom: 30px;
 }
 
 .main__grid {
@@ -725,4 +734,21 @@ body {
 	font-weight: 700;
 	transform: translate(-50%, -50%);
 	font-size: 48px;
+}
+
+.header__quantity {
+	position: absolute;
+	top: -5px;
+	right: 0;
+	color: #D95F18;
+	background-color: #ffffff;
+	width: 25px;
+	height: 25px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: 700;
+	font-size: 16px;
+
 }

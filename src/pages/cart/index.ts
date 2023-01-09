@@ -56,11 +56,11 @@ class CartPage extends Page {
 			mainProductsCardDescription.innerHTML = `${arrayNew[arrayidCard[i]].description}`;
 			const mainProductsCardIAccount = this.createElementMain('div', 'product-cart__account', mainProductsCardItem);
 			const mainProductsCardStock = this.createElementMain('div', 'product-cart__stock', mainProductsCardIAccount);
-			mainProductsCardStock.innerHTML = `stock: ${arrayNew[arrayidCard[i]].stock}`;
+			mainProductsCardStock.innerHTML = `stock: ${arrayNew[arrayidCard[i]].stock} $`;
 			const mainProductsCardAmount = this.createElementMain('div', 'product-cart__amount', mainProductsCardIAccount);
 			mainProductsCardAmount.innerHTML = `<span>+</span> 3 <span>-</span>`;
 			const mainProductsCardPrice = this.createElementMain('div', 'product-cart__price', mainProductsCardIAccount);
-			mainProductsCardPrice.innerHTML = `price: <span>549</span></div>`;
+			mainProductsCardPrice.innerHTML = `price: <span>${arrayNew[arrayidCard[i]].price} $ </span></div>`;
 		}
 			const mainProductsCardSummary = this.createElementMain('div', 'main__list-summary', mainCartGrid, 'summary');
 			const mainProductsSummaryTitle = this.createElementMain('div', 'summary__title', mainProductsCardSummary) as HTMLElement;

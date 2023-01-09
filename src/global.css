@@ -138,6 +138,10 @@ body {
   gap: 16px;
 }
 
+.header__card {
+  position: relative;
+}
+
 [class*=__container] {
   margin: 0 auto;
   max-width: 1440px;
@@ -156,6 +160,10 @@ body {
   left: 0;
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+.main__container {
+  padding-bottom: 30px;
 }
 
 .main__grid {
@@ -1022,4 +1030,26 @@ body {
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   font-size: 48px;
+}
+
+.header__quantity {
+  position: absolute;
+  top: -5px;
+  right: 0;
+  color: #D95F18;
+  background-color: #ffffff;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-weight: 700;
+  font-size: 16px;
 }
