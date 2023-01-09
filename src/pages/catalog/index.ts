@@ -32,7 +32,7 @@ class CatalogPage extends Page {
             const mainMenu = this.createElementMain('div', 'main__menu', mainContainer, 'menu');
             const menuItems = this.createElementMain('ul', 'menu__items', mainMenu);
             const menuItem = this.createElementMain('li', 'menu__item', menuItems);
-            menuItem.innerHTML = `<a href = '/' alt =''>STORE</a>`;
+            menuItem.innerHTML = `<a href = '#main-page' alt =''>STORE</a>`;
             const menuItemOne = this.createElementMain('li', 'menu__item', menuItems);
             menuItemOne.innerHTML = `${arrayNew[idCard].category}`;
             const menuItemTwo = this.createElementMain('li', 'menu__item', menuItems);
@@ -93,7 +93,7 @@ class CatalogPage extends Page {
             cardInfoDrop.innerHTML = `drop from cart`;
             const cardInfoBuy = this.createElementMain('button', 'card-info__buy', cardInfoCart, 'button');
             cardInfoBuy.innerHTML = `buy now`;
-          
+
         }
     }
 
