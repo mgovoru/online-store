@@ -270,7 +270,7 @@ class MainPage extends Page {
 			}
 		}
 
-		// работа со строкой url c params, удалось в строку передать значения, но надо считывать при перезагрузке, с этим буду разбираться. Пока, чтобы обновить строку надо снова запускать startю И с самим алгоритмом проблемы, надо подумать. Пробный вариант.
+		// работа со строкой url c params
 		let url = new URL(window.location.href);
 		let params = new URLSearchParams(url.search);
 		params.set('maxprice', '1749');
@@ -326,7 +326,6 @@ class MainPage extends Page {
 
 			arrayFiltersBrand = arrayFiltersBrand.filter(item => (item.price > Number(params.get('minprice')) && (item.price < Number(params.get('maxprice')))));
 
-			// выводимые количества должны пересчитываться, надо еще подумать.
 			let arrayNumberQuantity = document.querySelectorAll('.categories__quantity');
 			let arrayNumberBrands = document.querySelectorAll('.brand__quantity');
 			for (let i = 0; i < listCategories.length; i++) {
